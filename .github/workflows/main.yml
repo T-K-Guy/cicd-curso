@@ -1,0 +1,25 @@
+name: Github action
+
+on:
+	push:
+		branches: ['main']
+	pull_request:
+		branches: ['main']
+
+jobs: 
+	build:
+		runs-on:ubuntu-lastest
+		steps:
+			- name: Mostrar mensaje
+			  run: echo "Hola, mundo"
+
+  			- name: Checkout del codigo
+			  uses: actions/checkout@v4
+
+			- name: Usar NODE JS
+			  uses: actions/setup-node@v4
+			  with:
+			   node-version: '20'
+
+			- name: Construir app con node
+			  run: npm install
