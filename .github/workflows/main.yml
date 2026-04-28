@@ -27,7 +27,7 @@ jobs:
 
       - name: Verificar si app.js existe
         run: |
-          if [ ! -f "$GITHUB_WORKSPACE/app.js" ]; then
+          if [ ! -f "$GITHUB_WORKSPACE/api-node/app.js" ]; then
             echo "No se encontró app.js en la raíz"
             exit 1
           fi
