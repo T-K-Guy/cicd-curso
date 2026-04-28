@@ -1,25 +1,33 @@
 name: Github action
 
 on:
-	push:
-		branches: ["main"]
-	pull_request:
-		branches: ["main"]
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
-jobs: 
-	build:
-		runs-on: ubuntu-lastest
-		steps:
-			- name: Mostrar mensaje
-			  run: echo "Hola, mundo"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar mensaje
+        run: echo "Hola, mundo"
 
-  			- name: Checkout del codigo
-			  uses: actions/checkout@v4
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
 
-			- name: Usar NODE JS
-			  uses: actions/setup-node@v4
-			  with:
-			   node-version: '20'
+      - name: Usar NODE JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-			- name: Construir app con node
-			  run: npm install
+      - name: Construir app con node
+        run: npm install
+
+      - name: Verificar si app.js existe
+        run: |
+          if [ ! -f "$GITHUB_WORKSPACE/app.js" ]; then
+            echo "No se encontró app.js en la raíz"
+            exit 1
+          fi
+          echo "Se encontró app.js por lo que continua el workflow"
