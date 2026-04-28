@@ -34,4 +34,5 @@ jobs:
           echo "Se encontró app.js por lo que continua el workflow"
 
       - name: Probar aplicacion con test
+        working-directory: ./api-node
         run: npm test
