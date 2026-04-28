@@ -22,6 +22,7 @@ jobs:
           node-version: '20'
 
       - name: Construir app con node
+        working-directory: ./api-node
         run: npm install
 
       - name: Verificar si app.js existe
